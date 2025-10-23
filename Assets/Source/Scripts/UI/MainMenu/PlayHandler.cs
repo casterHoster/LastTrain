@@ -1,7 +1,6 @@
 using LastTrain.Inventory;
 using LastTrain.Level;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace LastTrain.UI.MainMenu
@@ -12,17 +11,19 @@ namespace LastTrain.UI.MainMenu
         [SerializeField] private PlayerInventoryHandler _playerInventoryHandler;
         [SerializeField] private string _gameplayScene;
         [SerializeField] private Button _playButton;
+        [SerializeField] private SceneLoadVisual _sceneLoadVisual;
 
         private void Awake()
         {
             _playButton.onClick.AddListener(StartPlay);
         }
 
-        private void StartPlay()
+        private async void StartPlay()
         {
             if (_levelsHandler.IsChosed && _playerInventoryHandler.TryGiveInventoryWeaponFromSlots())
             {
-                SceneManager.LoadScene(_gameplayScene);
+                _sceneLoadVisual.OpenLoadScreen();
+               await SceneLoader.Load(_gameplayScene, _sceneLoadVisual);
             }
         }
     }
