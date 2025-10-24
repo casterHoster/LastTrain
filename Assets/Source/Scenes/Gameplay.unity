@@ -3025,6 +3025,7 @@ MonoBehaviour:
   _canvas: {fileID: 1433297221}
   _cam: {fileID: 1126611521}
   _uIStateMachine: {fileID: 344213183}
+  _uiCursorFollower: {fileID: 888596585}
   _levelStateMachine: {fileID: 634939150}
   _gameplayTraining: {fileID: 429251134}
   _enemySpawner: {fileID: 851371660}
@@ -3032,18 +3033,18 @@ MonoBehaviour:
   _playerHealth: {fileID: 3218667037945348532}
   _trainMovement: {fileID: 6951993915278179848}
   _levelGenerator: {fileID: 817780961}
+  _levelProgress: {fileID: 1505221486}
+  _levelElementsCreator: {fileID: 1624335203}
   _weaponHandler: {fileID: 4064344279303059727}
   _weaponRotator: {fileID: 6094426347617397415}
   _aimingTargetProvider: {fileID: 888596584}
-  _uiCursorFollower: {fileID: 888596585}
   _particlePool: {fileID: 1523583553}
   _pickableAmmunitionPool: {fileID: 1143995404}
-  _projectilePool: {fileID: 562779373}
-  _cameraFollower: {fileID: 1126611523}
-  _levelProgress: {fileID: 1505221486}
-  _levelElementsCreator: {fileID: 1624335203}
   _pickableAmmunitionSpawner: {fileID: 2060328544}
+  _projectilePool: {fileID: 562779373}
   _enemyPool: {fileID: 1700526723}
+  _cameraFollower: {fileID: 1126611523}
+  _menuScene: MainMenu
 --- !u!4 &329617154
 Transform:
   m_ObjectHideFlags: 0
@@ -3935,6 +3936,10 @@ MonoBehaviour:
   _computerSwitchOkButton: {fileID: 987106149}
   _mobileSwitchOkButton: {fileID: 2042105098}
   _pickUpOkButton: {fileID: 214531701}
+  _cameraTrainingDelay: 5
+  _shootingTrainingDelay: 7
+  _switchingTrainingDelay: 10
+  _pickUpTrainingDelay: 15
 --- !u!4 &429251135
 Transform:
   m_ObjectHideFlags: 0
@@ -5715,6 +5720,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530500664}
   m_CullTransparentMesh: 1
+--- !u!1 &538245695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538245698}
+  - component: {fileID: 538245697}
+  - component: {fileID: 538245696}
+  m_Layer: 0
+  m_Name: DiRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &538245696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538245695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c399f422776157f40890992f8b6425e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &538245697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538245695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 538245696}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &538245698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538245695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 222.40387, y: 265.70828, z: -1.9479973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &562779372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,7 +7404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4028d93449e258e4e8af889acd10e0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuScene: MainMenu
 --- !u!4 &634939151
 Transform:
   m_ObjectHideFlags: 0
@@ -8497,7 +8578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGenerator: {fileID: 817780961}
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
   _trainMovement: {fileID: 6951993915278179848}
   _trainCollider: {fileID: 7070646871738559671}
   _allowTrainDistance: 500
@@ -11087,7 +11167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textForKillsCount: {fileID: 1707197842}
   _textForLevelCount: {fileID: 172867074}
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
   _levelProgress: {fileID: 1505221486}
 --- !u!4 &1084250825
 Transform:
@@ -12517,7 +12596,6 @@ MonoBehaviour:
   _selfEpsilon: 0.02
   _defaultColor: {r: 1, g: 0, b: 0, a: 1}
   _reachableColor: {r: 0, g: 1, b: 0, a: 1}
-  _useTooFarColor: 1
   _lerpSpeed: 12
   _debugDraw: 0
 --- !u!1 &1397016798
@@ -13254,7 +13332,6 @@ MonoBehaviour:
   _progressSlider: {fileID: 40948255}
   _startDelaySeconds: 5
   _nextLevelButton: {fileID: 70053414}
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
 --- !u!4 &1505221487
 Transform:
   m_ObjectHideFlags: 0
@@ -14297,7 +14374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystick: {fileID: 1781950845}
   _aim: {fileID: 888596584}
-  _useWorldHit: 0
 --- !u!4 &1538978595
 Transform:
   m_ObjectHideFlags: 0
@@ -15272,7 +15348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentTransformForElements: {fileID: 1624335204}
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
 --- !u!4 &1624335204
 Transform:
   m_ObjectHideFlags: 0
@@ -18098,7 +18173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGenerator: {fileID: 817780961}
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
   _pickableAmmunitionPrefabs:
   - {fileID: 5951585882521315158, guid: aadbcde3e1c05b34e8565d1890961ef9, type: 3}
   - {fileID: 2184029671503267047, guid: fd2e5d0a7a019374aa1204a44b8f2142, type: 3}
@@ -18750,7 +18824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c757439bb45094b979fb15c45d2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sharedData: {fileID: 11400000, guid: 81110a75b462b3747a2164fd713eea2a, type: 2}
 --- !u!1001 &8201873092441594022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18999,3 +19072,4 @@ SceneRoots:
   - {fileID: 344213184}
   - {fileID: 329617154}
   - {fileID: 429251135}
+  - {fileID: 538245698}

@@ -5,12 +5,20 @@ using LastTrain.Data;
 using System.Collections.Generic;
 using UnityEngine;
 using YG;
+using Zenject;
 
 namespace LastTrain.Weapons.System
 {
     public class WeaponsCreator : MonoBehaviour
     {
+        private readonly ITransferDataProvider _dataProvider;
         private float _ammoPercent;
+
+        [Inject]
+        public WeaponsCreator(ITransferDataProvider dataProvider)
+        {
+            _dataProvider = dataProvider;
+        }
 
         public void Init()
         {
